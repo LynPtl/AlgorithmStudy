@@ -32,9 +32,58 @@ def f(a, b):
         sys.exit()
     max_gap = 0
     # Insert your code here
+    arr = [True]*(b+1)
+    arr[0] = False
+    arr[1] = False
+    for i in range(2,int(sqrt(b))+1):
+        if arr[i] == True:
+            for j in range(i*i,b+1,i):
+                arr[j] = False
+    primes = []
+    for i in range(a,b+1):
+        if arr[i] == True:
+            primes.append(i)
+    
+    for i in range(0,len(primes)-1):
+        curgap = primes[i+1] - primes[i]
+        max_gap = max(max_gap,curgap)
+    
+    if len(primes)<=1:
+        max_gap = 1
+    print(f"The maximum gap between successive prime numbers in that interval is {max_gap-1}")
 
-    print(f"The maximum gap between successive prime numbers in that interval is {max_gap}")
+#sample answer
+"""
+# 返回n以下所有的素数
+def sieve_of_primes_up_to(n):
+    sieve = list(range(2, n + 1))
+    i = 0
+    while sieve[i] <= round(n**0.5):
+        sieve_as_set = set(sieve)
+        k = 0
+        while True:
+            factor = sieve[i] * sieve[i + k]
+            if factor > n:
+                break
+            sieve_as_set.remove(factor)
+            k += 1
+        sieve = sorted(sieve_as_set)
+        i += 1
+    return sieve
 
+    if a <= 0 or b < a:
+        sys.exit()
+    max_gap = 0
+    # Insert your code here
+    primes = sieve_of_primes_up_to(b)
+    first = None
+    for prime in primes:
+        if prime >= a and first is None:
+            first = prime
+        if first is not None:
+            max_gap = max(max_gap, prime - first - 1)
+            first = prime
+"""
 
 if __name__ == '__main__':
     import doctest
