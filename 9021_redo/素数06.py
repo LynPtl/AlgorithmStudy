@@ -33,6 +33,8 @@ def single_factors(number):
         while number % num == 0:
             dict[num] = dict[num]+1
             number = number//num
+    #这个if是如果for循环只遍历到sqrt+1的结果，因为一个合数最多有一个大于sqrt的因数，这是数学性质。
+    #如果遍历到n+1就不需要加这个if
     if number > 1:
         dict[number] = dict[number] + 1
     times = 1
