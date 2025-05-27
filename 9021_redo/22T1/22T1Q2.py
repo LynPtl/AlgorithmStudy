@@ -60,7 +60,10 @@ def f(arg_for_seed, nb_of_elements, max_element):
         if item not in dict[item % 10]:
             dict[item % 10].append(item)
     for key,values in sorted(dict.items(), key = lambda items : (len(items[1]),items[0]),reverse=True):
+        # 第61这一行的lambda不是很好写 这个items[0]对应的是key，items[1]对应的是value
+        # 先以长度进行排列，长度相等的以末尾数字大小进行排列
         values = sorted(values, key = lambda item : len(str(item)),reverse=True)
+        # 对于每个小数组，内部按照长度进行排列
         R.append(values)
     print('Here is R:', R)
 if __name__ == '__main__':
