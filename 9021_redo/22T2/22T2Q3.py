@@ -104,10 +104,25 @@ def triangle(height):
         height = height - 2
         row += 1
         result.append(line)
-    for i in zip_longest(*result , fillvalue=""):
+    for i in zip_longest(*result , fillvalue=" "):
         print(" ".join(i).strip())
 
+    #sample answer
+    """
+    lines = []
+    start = 0
+    while height > 0:
+        line = ""
+        for i in range(height):
+            line += chr(ord('A') + start % 26)
+            start += 1
+            lines.append(len(lines * " " + line))
+            height = height - 2
 
+    from itertools import zip_longest
+    for line in zip_longest(*lines,fillvalue=" "):
+        print(" ".join(line).strip())
+    """
 if __name__ == '__main__':
     import doctest
 
