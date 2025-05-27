@@ -38,6 +38,12 @@ def reorder(number):
         return int('-'+"".join(strn))
     else:
         return int("".join(strn))
+    
+    #sample answer
+    """
+    n = int("".join(sorted(str(abs(number)),reverse=True)))
+    return n if number > 0 else 0 - n
+    """
 if __name__ == "__main__":
     import doctest
 
