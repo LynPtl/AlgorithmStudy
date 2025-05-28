@@ -38,7 +38,7 @@ def chains(sums, summands, a):
     [10, 14, 21, 37] by successively adding 4, 7, 16
     [10, 26, 36, 38] by successively adding 16, 10, 2
     '''
-    
+
     for L in sorted(_chains(sums, summands, a)):
         if len(L) == 1:
             print(L)
@@ -48,11 +48,28 @@ def chains(sums, summands, a):
                                 for i in range(len(L) - 1)
                            )
                  )
-
+# sample answer
 def _chains(sums, summands, a):
-    return []
+    # return []
     # REPLACE THE RETURN STATEMENT ABOVE WITH YOUR CODE
-
+    from itertools import permutations
+    from collections import defaultdict
+    solutions = []
+    if a in sums:
+        counter = defaultdict(set)
+        counter[1].add(tuple([a]))
+        if summands:
+            for items in permutations(summands,len(summands)):
+                sub_list = [a]
+                for num in items:
+                    if sub_list[-1] + num in sums:
+                        sub_list.append(sub_list[-1] + num)
+                    else:
+                        break
+                counter[len(sub_list)].add(tuple(sub_list))
+        longest = max(counter)
+        solutions = map(list, counter[longest])
+    return solutions
 
 
 if __name__ == '__main__':
