@@ -28,9 +28,16 @@ def is_heterosquare(square):
     False
     '''
 
-    return
+    # return
     # REPLACE return WITH YOUR CODE
-
+    import numpy as np
+    grid = np.array(square)
+    result = [np.sum(grid[i]) for i in range(len(grid))]
+    result.extend([np.sum(grid[:,i]) for i in range(len(grid[0]))])
+    result.extend([np.sum(grid.diagonal()),np.sum(np.fliplr(grid).diagonal())])
+    if len(result) == len(set(result)):
+        return True
+    return False
 # POSSIBLY DEFINE OTHER FUNCTIONS
 
 
