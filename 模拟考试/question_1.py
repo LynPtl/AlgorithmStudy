@@ -43,6 +43,19 @@ def f(size, characters):
               C D
                 A
     """
+    lines = []
+    for i in range(size):
+      line = ""
+      length = i * 2 + 1
+      cyc = cycle(characters)
+      for j in range(length):
+        line += next(cyc)
+      line = " " * (size - i - 1) + line
+      lines.append(line)
+    for l in zip_longest(*lines,fillvalue=" "):
+       print(" ".join(l).rstrip())
+
+"""
     # Insert your code here
     columns = []
     for col_index in range(size):
@@ -55,6 +68,7 @@ def f(size, characters):
       columns.append(column)
     for line in zip_longest(*columns, fillvalue=" "):
         print((" ".join(line)).rstrip())
+"""
 if __name__ == "__main__":
     import doctest
 
