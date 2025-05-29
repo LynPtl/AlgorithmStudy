@@ -48,9 +48,6 @@ def statistics(filename):
         length_of_longest_word = max(length_of_word)
         min_nb_of_words_in_sentences = min(nb_of_words)
         max_nb_of_words_in_sentences = max(nb_of_words)
-        
-
-
         # REPLACE pass ABOVE WITH YOUR CODE
     
     print('There are', nb_of_sentences, 'sentence(s).')

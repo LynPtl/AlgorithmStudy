@@ -93,7 +93,35 @@ def longest_words(filename):
             print(f'    Spotted as word number {word_nb} in sentence '
                   f'number {sentence_nb}.'
                  )
-               
+
+    #正则版本
+    import re
+    longest_words = defaultdict(list)
+    line_nb = -1
+    word_nb = -1
+    counter = defaultdict(list)
+    with open(filename) as file:
+        line_nb = 0
+        for sentence in re.split(r"[|!\.]",file.read()):
+            if sentence.isspace():
+                continue
+            line_nb += 1
+            word_nb = 0
+            for word in re.findall(r"\w+",sentence):
+                if word.isspace():
+                    continue
+                word_nb += 1
+                counter[len(word)].append((word,line_nb,word_nb))
+    if counter:
+        max_length = max(counter.keys())
+        for word,index,word_nb in counter[max_length]:
+            longest_words[word.lower()].append((index,word_nb))
+    for word in sorted(longest_words.keys()):
+        print(f"{word.capitalize()}:")
+        for sentence_nb, word_nb in longest_words[word]:
+            print(f'    Spotted as word number {word_nb} in sentence '
+                  f'number {sentence_nb}.'
+                )   
 
 if __name__ == '__main__':
     import doctest
