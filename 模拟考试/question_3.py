@@ -44,8 +44,8 @@ def transform(number):
         strn = strn.replace(i,"")
     listn = []
     for i in range(len(strn)):
-        if strn[i] != "":
-            listn.append(strn[i])
+        #if strn[i] != "":
+        listn.append(strn[i])
     listn = sorted(listn,reverse=True)
     if not listn:
         return 0
