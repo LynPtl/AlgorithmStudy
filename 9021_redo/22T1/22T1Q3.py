@@ -69,7 +69,8 @@ def f(total_nb_of_letters, height):
         line_no = i // height
         each_line = letters[i:i+height]
         if line_no % 2 == 0:
-            each_line = each_line.ljust(height)
+            # each_line = each_line.ljust(height)
+            each_line = f"{each_line:<{height}}"
         else:
             each_line = each_line[::-1].rjust(height)
         lines.append(each_line)
